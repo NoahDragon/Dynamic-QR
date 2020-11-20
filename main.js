@@ -17,8 +17,7 @@ function main() {
   var config = 'config.json';
 
   // Testing code
-  var testconfig = getUrlParameter('testconfig');
-  testconfig && config = testconfig;
+  var config = getUrlParameter('testconfig');
 
   // Actual logic
   config && $.getJSON(config, function(data) {
