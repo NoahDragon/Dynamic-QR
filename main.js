@@ -36,11 +36,8 @@ function main() {
         var matches = data[i].body.match(/\bhttps?:\/\/\S+/gi);
 
         if (matches && ( !author || (author && author === data[i].user.login))) { // contain url
-          //window.location.replace(matches[0]); // If have multiple url only the first one will be used.
-          console.log(matches);
-          console.log(author);
-          console.log(i);
-          console.log("matches found");
+          window.location.replace(matches[0]); // If have multiple url only the first one will be used.
+          break;
         }
       }
     });
