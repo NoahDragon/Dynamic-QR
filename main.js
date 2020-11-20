@@ -24,10 +24,20 @@ function main() {
     console.log(data);
     var dest = getUrlParameter('dest');
     const url = data[dest].url;
-    const author = data[dest].author;
+    if (data[dest].author && !data[dest].author.trim()) {
+      const author = data[dest].author;
+    }
 
     $.getJSON(url, function(data) {
       console.log(data);
+      var len = data.length;
+      for (var i = len-1; i >= 0; i--) {
+        var matches = data[i].body.match(/\bhttps?:\/\/\S+/gi);
+
+        if (matches && ((author && author === data[i].user.login) || !author)) { // contain url
+          window.location.replace(matches[0]); // If have multiple url only the first one will be used.
+        }
+      }
     });
 
   });
