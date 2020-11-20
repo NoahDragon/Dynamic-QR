@@ -3,11 +3,6 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Expires" content="0"/>
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="main.js"></script>
-<script type="text/javascript">
-  main();
-</script>
 <style>
   body { text-align: center; padding: 50px; }
   h1 { font-size: 30px; }
@@ -25,5 +20,13 @@
 </style>
 <body>
   <article>
-    <h1 class="centertext">If you saw this text, please clean cache and check the configurations.</h1>
+    <h1 id="warn" class="centertext"></h1>
+  </article>
+
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript">
+    main();
+    $("#warn").text("If you saw this text after page loading, please check configuration or clean the cache.");
+  </script>
 </body>
