@@ -21,13 +21,13 @@ function main() {
 
   // Actual logic
   config && $.getJSON(config, function(data) {
-    testconfig && console.log(data);
+    console.log(data);
     var dest = getUrlParameter('dest');
     const url = data[dest].url;
     const author = data[dest].author;
 
     $.getJSON(url, function(data) {
-      testconfig && console.log(data);
+      console.log(data);
     });
 
   });
