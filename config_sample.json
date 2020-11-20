@@ -1,7 +1,6 @@
-[
-	{
-		"dest":"123",
-		"url":"simple",
-		"author":""
+{
+	"zoom": {
+		"url": "https://api.github.com/repos/aristath/aristath.github.com/issues/5/comments",
+		"author": "NoahDragon"
 	}
-]
+}
