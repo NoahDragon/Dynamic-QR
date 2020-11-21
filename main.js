@@ -49,7 +49,6 @@ async function main() {
             } else {
               window.location.replace(matches[0]); // If have multiple url only the first one will be used.
             }
-            }
             break;
           }
         }
