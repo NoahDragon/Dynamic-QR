@@ -1,4 +1,5 @@
 async function main() {
+  $.ajaxSetup({async:false});
   var getUrlParameter = function getUrlParameter(sParam) {
       var sPageURL = window.location.search.substring(1),
           sURLVariables = sPageURL.split('&'),
@@ -19,7 +20,7 @@ async function main() {
   // Testing code
   var test = getUrlParameter('testconfig');
   var intest = false;
-  var redirect = getUrlParameter('redirect');
+  var nonredirect = getUrlParameter('nonredirect');
   if (test) {
     config = test;
     intest = true
@@ -53,7 +54,12 @@ async function main() {
               console.log(author);
               console.log(i);
             } 
-            if (!redirect) {
+            
+            // Update the link var in case redirect fails
+            link.attr('href', matches[0]);
+            link.text("If redirect fails, please click this link.");
+
+            if (!nonredirect) {
               window.location.replace(matches[0]); // If have multiple url only the first one will be used.
             }
             

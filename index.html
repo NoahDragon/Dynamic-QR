@@ -20,13 +20,16 @@
 </style>
 <body>
   <article>
+    <h1 id="url" class="centertext"></h1>
     <h1 id="warn" class="centertext"></h1>
   </article>
 
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="main.js"></script>
   <script type="text/javascript">
+    var link = $('<a/>'); //will be updated in main
     main().then(()=>{
+      $("#url").append(link);
       $("#warn").text("If you saw this text after page loading, please check configuration or clean the cache.");
     });  
   </script>
