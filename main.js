@@ -19,6 +19,7 @@ async function main() {
   // Testing code
   var test = getUrlParameter('testconfig');
   var intest = false;
+  var redirect = getUrlParameter('redirect');
   if (test) {
     config = test;
     intest = true
@@ -51,9 +52,11 @@ async function main() {
               console.log(matches);
               console.log(author);
               console.log(i);
-            } else {
+            } 
+            if (!redirect) {
               window.location.replace(matches[0]); // If have multiple url only the first one will be used.
             }
+            
             break;
           }
         }
