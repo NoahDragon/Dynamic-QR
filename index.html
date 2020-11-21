@@ -26,7 +26,8 @@
   <script type="text/javascript" src="jquery.js"></script>
   <script type="text/javascript" src="main.js"></script>
   <script type="text/javascript">
-    main();
-    $("#warn").text("If you saw this text after page loading, please check configuration or clean the cache.");
+    main().then(()=>{
+      $("#warn").text("If you saw this text after page loading, please check configuration or clean the cache.");
+    });  
   </script>
 </body>

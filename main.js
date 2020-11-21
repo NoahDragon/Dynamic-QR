@@ -1,4 +1,4 @@
-function main() {
+async function main() {
   var getUrlParameter = function getUrlParameter(sParam) {
       var sPageURL = window.location.search.substring(1),
           sURLVariables = sPageURL.split('&'),
@@ -17,7 +17,12 @@ function main() {
   var config = 'config.json';
 
   // Testing code
-  var config = getUrlParameter('testconfig');
+  var test = getUrlParameter('testconfig');
+  var intest = false;
+  if (test) {
+    config = test;
+    intest = true
+  }
 
   // Actual logic
   config && $.getJSON(config, function(data) {
@@ -26,18 +31,27 @@ function main() {
     const url = data[dest].url;
     var author;
     if (data[dest].author && !data[dest].author.trim()) {
-      author = data[dest].author;
+      author = data[dest].author.trim();
     }
 
     $.getJSON(url, function(data) {
       console.log(data);
       var len = data.length;
       for (var i = len-1; i >= 0; i--) {
-        var matches = data[i].body.match(/\bhttps?:\/\/\S+/gi);
+        if (!author || (author && author === data[i].user.login)) { // If author not exists or author is the commenter
+          var matches = data[i].body.match(/\bhttps?:\/\/\S+/gi);
 
-        if (matches && ( !author || (author && author === data[i].user.login))) { // contain url
-          window.location.replace(matches[0]); // If have multiple url only the first one will be used.
-          break;
+          if (matches) {
+            if (intest) {
+              console.log(matches);
+              console.log(author);
+              console.log(i);
+            } else {
+              window.location.replace(matches[0]); // If have multiple url only the first one will be used.
+            }
+            }
+            break;
+          }
         }
       }
     });
