@@ -1,5 +1,4 @@
 async function main() {
-  $.ajaxSetup({async:false});
   var getUrlParameter = function getUrlParameter(sParam) {
       var sPageURL = window.location.search.substring(1),
           sURLVariables = sPageURL.split('&'),
