@@ -29,9 +29,10 @@ async function main() {
     console.log(data);
     var dest = getUrlParameter('dest');
     const url = data[dest].url;
-    var author;
-    if (data[dest].author && !data[dest].author.trim()) {
-      author = data[dest].author.trim();
+    var author = data[dest].author;
+    author && author.trim();
+    if (author.length === 0) {
+      author = undefined;
     }
 
     $.getJSON(url, function(data) {
