@@ -32,7 +32,8 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          branch: deploy
+          branch: deploy-pr
+          delete-branch: true
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
